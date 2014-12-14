@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-coveralls');
-  // grunt.loadNpmTasks('jasmine-jquery');
+  grunt.loadNpmTasks('grunt-githooks');
 
   // ----------
   var distribution = 'build/mirador/mirador.js',
@@ -243,7 +243,13 @@ module.exports = function(grunt) {
           ]
           }
         }
-      }
+      },
+      githooks: {
+        all: {
+          'pre-commit': 'test coverage',
+          'pre-push': 'test coverage'
+        }
+      },
     }
   });
 
@@ -253,8 +259,8 @@ module.exports = function(grunt) {
   grunt.registerTask('copy:release', function() {
     grunt.file.recurse('build', function(abspath, rootdir, subdir, filename) {
       var dest = releaseRoot +
-      (subdir ? subdir + '/' : '/') +
-      filename;
+        (subdir ? subdir + '/' : '/') +
+        filename;
 
       grunt.file.copy(abspath, dest);
     });
