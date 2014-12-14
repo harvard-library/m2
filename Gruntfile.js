@@ -17,8 +17,8 @@ module.exports = function(grunt) {
 
   // ----------
   var distribution = 'build/mirador/mirador.js',
-      minified = 'build/mirador/mirador.min.js',
-      releaseRoot = '../site-build/built-mirador/',
+  minified = 'build/mirador/mirador.min.js',
+  releaseRoot = '../site-build/built-mirador/',
 
   // libraries/plugins
   vendors = [
@@ -79,12 +79,12 @@ module.exports = function(grunt) {
       },
       css: {
         src: [
-        'css/normalize.css',
-        'css/font-awesome.css',
-        'css/jquery-ui.custom.min.css',
-        'css/layout-default-latest.css',
-        'css/mirador.css',
-        '!css/mirador-combined.css'
+          'css/normalize.css',
+          'css/font-awesome.css',
+          'css/jquery-ui.custom.min.css',
+          'css/layout-default-latest.css',
+          'css/mirador.css',
+          '!css/mirador-combined.css'
         ],
         dest: 'build/mirador/css/mirador-combined.css'
       }
@@ -129,10 +129,10 @@ module.exports = function(grunt) {
         }, {
           src: 'js/lib/parse.min.js',
           dest: 'build/mirador/parse.min.js'
-	}, {	    
+        }, {	    
           src: 'js/lib/ZeroClipboard.swf',
-	  dest: 'build/mirador/ZeroClipboard.swf'
-	}]
+          dest: 'build/mirador/ZeroClipboard.swf'
+        }]
       }
     },
 
@@ -204,7 +204,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
     coveralls: {
       src: 'reports/coverage/lcov.info',
     },
@@ -240,17 +240,17 @@ module.exports = function(grunt) {
                 dir:'reports/coverage'
               }
             }
-          ]
+            ]
           }
         }
-      },
-      githooks: {
-        all: {
-          'pre-commit': 'test coverage',
-          'pre-push': 'test coverage'
-        }
-      },
-    }
+      }
+    },
+    githooks: {
+      all: {
+        'pre-commit': 'test coverage',
+        'pre-push': 'test coverage'
+      }
+    },
   });
 
   // ----------
@@ -305,5 +305,5 @@ module.exports = function(grunt) {
   // Coverage task.
   // Runs instanbul coverage
   grunt.registerTask('coverage', 'jasmine:coverage');
-  
+
 };
