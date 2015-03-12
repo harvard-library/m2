@@ -31,7 +31,26 @@
         // "workspaceType": "1x2", // optional, allows you to limit functionality in 
         // a variety of collections of settings.
         "layout": "1x1",
-        //"mainMenuSettings" : {"show": true, "buttons" : {"bookmark" : true, "layout" : true}},
+        "mainMenuSettings" :
+          {"show": true,
+           "buttons" : {"bookmark" : true, "layout" : true},
+           "userButtons": [
+             /* Ordinary link */
+             {"label": "Link",
+             "attributes": {"href": "http://example.com"}},
+             /* If callback key is true, failing to include an ID attribute will *
+              *   throw an exception.                                            */
+             {"label": "Callback",
+              "attributes": {"id": "example-callback", href: "#noop"},
+              "callback": true},
+             /* Sublists are supported, but their display is not (yet) */
+             /*{"label": "Sublist",
+              "sublist": [
+                {"label": "One"},
+                {"label": "Two"}]
+             }*/
+           ]
+          },
         //'showAddFromURLBox' : false,
         //"saveSession":false,
         "data": [
@@ -122,6 +141,12 @@
             prefix: "http://54.148.223.225:8080/catch/annotator",
           }
         }
+      });
+
+      /* Callback for mainMenu configuration */
+      $(document).on('click', '#example-callback', function (e) {
+        alert("Example Callback");
+        e.preventDefault();
       });
     });
   </script>
